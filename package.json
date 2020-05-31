@@ -2,6 +2,12 @@
   "name": "s3uploader-vscode",
   "displayName": "s3uploader-vscode",
   "description": "Files uploader to Amazon S3",
+  "keywords": [
+    "S3",
+    "Markdown",
+    "upload",
+    "image"
+  ],
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.45.0"
