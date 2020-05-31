@@ -93,16 +93,6 @@
           "type": "boolean",
           "default": true,
           "description": "Use UUID as upload file name."
-        },
-        "s3uploader-vscode.markdown.listingCharacter": {
-          "type": "string",
-          "default": "-",
-          "enum": [
-            "-",
-            "*",
-            "1."
-          ],
-          "description": "Listing character of Markdown when uploading multiple files."
         }
       }
     }
