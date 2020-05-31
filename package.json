@@ -19,7 +19,42 @@
         "command": "s3uploader-vscode.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "S3 Uploader",
+      "properties": {
+        "s3uploader-vscode.basic.s3BucketName": {
+          "type": "string",
+          "default": "",
+          "description": "S3 bucket name."
+        },
+        "s3uploader-vscode.basic.s3DirectoryPath": {
+          "type": "string",
+          "default": "",
+          "description": "S3 directory path."
+        },
+        "s3uploader-vscode.advanced.s3BucketCustomUrl": {
+          "type": "string",
+          "default": "",
+          "description": "S3 bucket custom URL (If you wanna replace default one)."
+        },
+        "s3uploader-vscode.advanced.useUuidAsFileName": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use UUID as upload file name."
+        },
+        "s3uploader-vscode.markdown.listingCharacter": {
+          "type": "string",
+          "default": "-",
+          "enum": [
+            "-",
+            "*",
+            "1."
+          ],
+          "description": "Listing character of Markdown when uploading multiple files."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
