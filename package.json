@@ -16,14 +16,59 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:s3uploader-vscode.helloWorld"
+    "onCommand:s3uploader-vscode.uploadCopiedFileAndPasteLink",
+    "onCommand:s3uploader-vscode.uploadSelectedFileAndInsertLink"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "s3uploader-vscode.helloWorld",
-        "title": "Hello World"
+        "command": "s3uploader-vscode.uploadCopiedFileAndPasteLink",
+        "title": "Paste with S3 Uploading",
+        "category": "S3 Uploader"
+      },
+      {
+        "command": "s3uploader-vscode.uploadSelectedFileAndInsertLink",
+        "title": "Insert with S3 Uploading",
+        "category": "S3 Uploader"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "when": "editorIsOpen",
+          "command": "s3uploader-vscode.uploadCopiedFileAndPasteLink"
+        },
+        {
+          "when": "editorIsOpen && ! explorerResourceIsFolder",
+          "command": "s3uploader-vscode.uploadSelectedFileAndInsertLink"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceLangId == markdown || resourceLangId == html",
+          "command": "s3uploader-vscode.uploadCopiedFileAndPasteLink",
+          "group": "9_cutcopypaste"
+        }
+      ],
+      "explorer/context": [
+        {
+          "when": "editorIsOpen && ! explorerResourceIsFolder",
+          "command": "s3uploader-vscode.uploadSelectedFileAndInsertLink",
+          "group": "5_cutcopypaste"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "s3uploader-vscode.uploadCopiedFileAndPasteLink",
+        "key": "ctrl+shift+u",
+        "when": "editorIsOpen"
+      },
+      {
+        "command": "s3uploader-vscode.uploadSelectedFileAndInsertLink",
+        "key": "ctrl+alt+u",
+        "when": "editorIsOpen && ! explorerResourceIsFolder"
       }
     ],
     "configuration": {
