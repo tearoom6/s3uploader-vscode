@@ -1,8 +1,10 @@
 import * as vscode from 'vscode'
+import Config from './configs/config'
 
 const uploadCopiedFileAndPasteLink = async () => {
   const clipboardText = await vscode.env.clipboard.readText()
-  vscode.window.showInformationMessage(`uploadCopiedFileAndPasteLink: ${clipboardText}`)
+  const config = Config.getInstance()
+  vscode.window.showInformationMessage(`uploadCopiedFileAndPasteLink: ${clipboardText} ${config.getS3BucketName()}`)
 }
 
 const uploadSelectedFileAndInsertLink = async () => {
