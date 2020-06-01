@@ -38,10 +38,25 @@ const uploadFileAndInsertLink = async (filePath: string) => {
     }
     console.log('s3uploader loaded file.', loadedFile.getName(), loadedFile.getMimeType())
 
-    const uploadedFile = await uploadFile(loadedFile)
-    console.log('s3uploader uploaded file.', uploadedFile.getEncodedUrl(), uploadedFile.isImage())
+    // Uploading with progress...
+    vscode.window.withProgress({
+      location: vscode.ProgressLocation.Notification,
+      title: 's3uploader uploading file...',
+      cancellable: false,
+    }, async (progress, _token) => {
+      progress.report({ increment: 0 })
 
-    await insertFileLink(activeTextEditor, uploadedFile)
+      const uploadedFile = await uploadFile(loadedFile)
+      console.log('s3uploader uploaded file.', uploadedFile.getEncodedUrl(), uploadedFile.isImage())
+
+      await insertFileLink(activeTextEditor, uploadedFile)
+      vscode.window.setStatusBarMessage('s3uploader inserted file link.')
+
+      return new Promise(resolve => {
+        resolve()
+      })
+    })
+
   } catch (error) {
     console.error('s3uploader uploadFileAndInsertLink got error.', error)
     vscode.window.showErrorMessage(`s3uploader got error: ${error.message}`)
