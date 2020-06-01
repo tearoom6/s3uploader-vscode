@@ -19,8 +19,8 @@ export default class Config {
     return this.configurations.get<string>('basic.s3BucketName')
   }
 
-  getS3DirectoryPath(): string | undefined {
-    return this.configurations.get<string>('basic.s3DirectoryPath')
+  getS3DirectoryPath(): string {
+    return this.configurations.get<string>('basic.s3DirectoryPath', '')
   }
 
   getS3BucketCustomUrl(): string | undefined {
