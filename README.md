@@ -1,65 +1,68 @@
-# s3uploader-vscode README
+# s3uploader (VSCode)
 
-This is the README for your extension "s3uploader-vscode". After writing up a brief description, we recommend including the following sections.
+VSCode Extension; file uploader to Amazon S3 with inserting link.
+
+![usage](./images/usage.webp)
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- [ ] Upload file by drag & drop.
+- [x] Upload file by copy file absolute link & paste.
+- [ ] Upload file by copy file relative link & paste.
+- [ ] Upload file by copy image file binary & paste.
+- [ ] Upload multiple files at once.
+- [ ] Support multiple destination AWS account / S3 bucket.
+- [ ] Support other storage services.
+- [x] Insert Markdown tag (image or link).
+- [x] Insert HTML tag (image or link).
 
-For example if there is an image subfolder under your extension project workspace:
+## Setup
 
-\!\[feature X\]\(images/feature-x.png\)
+### AWS configuration
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+**Create access key:**
 
-## Requirements
+1. Sign in to [AWS console](https://console.aws.amazon.com/iam/home) and open IAM dashboard.
+2. Open user's [Security credentials] tab.
+3. Click [Create access key], and copy access key ID / secret access key.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+> References
+
+- [Managing Access Keys for IAM Users - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+
+**Configure credentials (only show the case of macOS):**
+
+1. Install awscli.
+
+   ```sh
+   brew install awscli
+   ```
+
+2. Add AWS default configurations.
+
+   ```sh
+   aws configure
+   ```
+
+> References
+
+- [Configuring the AWS CLI - AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+
+**Create S3 bucket:**
+
+1. Sign in to [AWS console](https://console.aws.amazon.com/iam/home) and open S3 console.
+2. Click [Create bucket] and copy bucket name.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+* `s3uploader-vscode.basic.s3BucketName`: S3 bucket name
+* `s3uploader-vscode.basic.s3DirectoryPath`: S3 directory path
+* `s3uploader-vscode.advanced.s3BucketCustomUrl`: S3 bucket custom URL (If you wanna replace default one)
+* `s3uploader-vscode.advanced.useUuidAsFileName`: Use UUID as upload file name
 
-For example:
+![settings](./images/settings.png)
 
-This extension contributes the following settings:
+## Extension Commands
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+* `s3uploader-vscode.uploadCopiedFileAndPasteLink`: Insert clipboard file link with S3 Uploading (default: ctrl+shift+u)
+* `s3uploader-vscode.uploadSelectedFileAndInsertLink`: Insert selected file link with S3 uploading (default: ctrl+alt+u)
