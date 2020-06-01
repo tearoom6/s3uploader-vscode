@@ -47,7 +47,7 @@ export default class S3Client {
         ContentType: loadedFile.getMimeType(),
         ACL: 'public-read'
       }
-      this.s3.putObject(params, (error, data) => {
+      this.s3.putObject(params, (error, _data) => {
         if (error) {
           reject(error)
           return
@@ -63,8 +63,8 @@ export default class S3Client {
   }
 
   async checkS3BucketAvailable(s3BucketName: string): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      this.s3.headBucket({ Bucket: s3BucketName }, (error, data) => {
+    return new Promise((resolve, _reject) => {
+      this.s3.headBucket({ Bucket: s3BucketName }, (error, _data) => {
         if (error) {
           resolve(false)
         }

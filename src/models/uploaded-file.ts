@@ -13,6 +13,10 @@ export default class UploadedFile {
     return this.mimeType !== null && this.mimeType.startsWith('image/')
   }
 
+  getName() {
+    return this.name
+  }
+
   getEncodedUrl() {
     return encodeURI(this.url)
   }
