@@ -1,13 +1,23 @@
 {
   "name": "s3uploader-vscode",
-  "displayName": "s3uploader-vscode",
-  "description": "Files uploader to Amazon S3",
+  "displayName": "S3 Uploader",
+  "description": "File uploader to Amazon S3 with inserting link",
+  "icon": "images/icon.png",
+  "publisher": "tearoom6",
   "keywords": [
     "S3",
     "Markdown",
     "upload",
     "image"
   ],
+  "bugs": {
+    "url": "https://github.com/tearoom6/s3uploader-vscode/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tearoom6/s3uploader-vscode.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.45.0"
