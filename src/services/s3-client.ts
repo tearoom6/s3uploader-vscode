@@ -1,5 +1,3 @@
-'use babel'
-
 import * as S3 from 'aws-sdk/clients/s3'
 import * as path from 'path'
 import { v4 as uuidv4 } from 'uuid'
