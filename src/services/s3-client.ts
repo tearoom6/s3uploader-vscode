@@ -13,7 +13,7 @@ export default class S3Client {
 
   constructor() {
     this.s3 = new S3()
-    this.config = Config.getInstance()
+    this.config = Config.getInstance().reload()
   }
 
   async upload(loadedFile: LoadedFile): Promise<UploadedFile> {

@@ -15,6 +15,11 @@ export default class Config {
     this.configurations = vscode.workspace.getConfiguration('s3uploader-vscode')
   }
 
+  reload(): Config {
+    this.configurations = vscode.workspace.getConfiguration('s3uploader-vscode')
+    return this
+  }
+
   getS3BucketName(): string | undefined {
     return this.configurations.get<string>('basic.s3BucketName')
   }
