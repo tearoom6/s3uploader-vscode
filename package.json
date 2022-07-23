@@ -131,7 +131,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.686.0",
-    "file-type": "^14.5.0",
+    "file-type": "^16.5.4",
     "uuid": "^8.1.0"
   }
 }
